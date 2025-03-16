@@ -1,0 +1,4 @@
+set(FILTERING_FILES
+ ${CMAKE_CURRENT_SOURCE_DIR}/GaussianFilter.cpp
+ ${CMAKE_CURRENT_SOURCE_DIR}/GaussianFilter.h
+              PARENT_SCOPE)
