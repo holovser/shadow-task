@@ -1,0 +1,4 @@
+set(HELPERS_FILES
+ ${CMAKE_CURRENT_SOURCE_DIR}/InputFileParser.cpp
+ ${CMAKE_CURRENT_SOURCE_DIR}/InputFileParser.h
+              PARENT_SCOPE)
