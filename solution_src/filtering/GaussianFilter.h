@@ -15,11 +15,11 @@ public:
 class GaussianFilter : GaussianFilterAbstract {
 public:
     GaussianFilter(InputFileParserAbstract& parser,
-         OutputFileWriter& fileWriter) : m_parser(parser), m_fileWriter(fileWriter) {};
+         OutputFileWriterAbstract& fileWriter) : m_parser(parser), m_fileWriter(fileWriter) {};
     std::vector<std::pair<int, int>> filter(unsigned int gaussianKernelSize, double standardDeviation);
 
 private:
     std::vector<double> calculateGaussianKernel(unsigned int kernelSize, double standardDeviation);
     InputFileParserAbstract& m_parser;
-    OutputFileWriter& m_fileWriter;
+    OutputFileWriterAbstract& m_fileWriter;
 };
