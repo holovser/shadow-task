@@ -10,13 +10,16 @@ project(${ExecName})
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(helpers)
+add_subdirectory(filtering)
 
 # Add the executable target
 add_executable(${ExecName}
     main.cpp
     ${HELPERS_FILES}
+    ${FILTERING_FILES}
 )
 
 target_include_directories( ${ExecName} PRIVATE
     helpers
+    filtering
 )
