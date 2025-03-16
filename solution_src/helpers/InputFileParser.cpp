@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 
-int InputFileParser::parse(std::vector<std::pair<int, int>> &result) {
+int InputFileParser::parse(std::vector<std::pair<double, double>>& result) {
 
     std::ifstream file(m_filePath);
     std::vector<std::pair<double, double>> data;
@@ -24,7 +24,7 @@ int InputFileParser::parse(std::vector<std::pair<int, int>> &result) {
         if (iss >> x >> y) {
             std::pair<double, double> lineData;
             lineData.first = x;
-            lineData.second = x;
+            lineData.second = y;
             result.push_back(lineData);
         }
     }
