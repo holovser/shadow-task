@@ -43,7 +43,7 @@ class DataSet:
         plt.grid(True)
 
         # Save the plot as a file (change format as needed)
-        # plt.savefig("plot.png", dpi=300, bbox_inches="tight")  # Save as PNG with high quality
+        plt.savefig("/shadow-task/intermediate_result/tmp_plot.png", dpi=300, bbox_inches="tight")  # Save as PNG with high quality
 
         plt.show()  # Show the plot
 
