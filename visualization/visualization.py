@@ -34,11 +34,11 @@ class DataSet:
         self.parse()
 
         plt.figure(figsize=(12, 6))
-        plt.plot(self.xPoints, self.yPoints, markersize=1, marker="o", linestyle="-", linewidth=0.3, color="b", label="std_dev=45.0 kernel_size=55")
+        plt.plot(self.xPoints, self.yPoints, markersize=1, marker="o", linestyle="-", linewidth=0.3, color="b", label="std_dev=30.0 kernel_size=45")
 
         plt.xlabel("X Values")
         plt.ylabel("Y Values")
-        plt.title("Filtered visualization")
+        plt.title("Manual Joined & Filtered visualization")
         plt.legend()
         plt.grid(True)
 
