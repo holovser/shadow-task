@@ -1,0 +1,6 @@
+set(JUMP_DETECTION_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/JumpDetector.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/JumpDetector.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/JumpJoiner.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/JumpJoiner.h
+              PARENT_SCOPE)
