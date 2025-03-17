@@ -11,8 +11,8 @@ int main(int argc, char* argv[]) {
     unsigned int kernelSize = 0;
     double standardDeviation = 0;
 
-    InputFileParser parser("/Users/serhiiholovko/Documents/shadow-task/raw_data/sample.txt");
-    OutputFileWriter outputWriter("/Users/serhiiholovko/Documents/shadow-task/raw_data/filtered_output.txt");
+    InputFileParser parser("/shadow-task/raw_data/sample.txt");
+    OutputFileWriter outputWriter("/shadow-task/raw_data/filtered_output.txt");
     JumpDetector jumpDetector;
     JumpJoiner jumpJoiner;
 
