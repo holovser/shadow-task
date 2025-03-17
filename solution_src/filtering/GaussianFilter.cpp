@@ -1,6 +1,8 @@
 #include "GaussianFilter.h"
 
 #include "InputFileParser.h"
+#include "JumpDetector.h"
+#include "JumpJoiner.h"
 
 #include <iostream>
 #include <cmath>
@@ -9,12 +11,15 @@
 #define PI 3.141592
 #define EULERS_NUMBER 2.71828
 
-std::vector<std::pair<int, int>> GaussianFilter::filter(unsigned int gaussianKernelSize, double standardDeviation) {
+std::vector<std::pair<double, double>> GaussianFilter::filter(unsigned int gaussianKernelSize, double standardDeviation) {
     std::vector<std::pair<double, double>> input;
     if (m_parser.parse(input) != 0) {
         std::cerr << "Error: Could not get data from parser" << std::endl;
-        return std::vector<std::pair<int, int>>();
+        return std::vector<std::pair<double, double>>();
     }
+
+    auto sections = m_jumpDetector.detect(input);
+    auto joinedResult = m_jumpJoiner.join(sections);
 
     if (gaussianKernelSize % 2 != 1) {
         throw std::runtime_error("Gaussian Kernel size must be an odd number");
@@ -26,19 +31,18 @@ std::vector<std::pair<int, int>> GaussianFilter::filter(unsigned int gaussianKer
 
     std::vector<std::pair<double, double>> output;
 
-    for (int i = middleOfKernel; i < (input.size() - middleOfKernel); i++ ) {
+    for (int i = middleOfKernel; i < (joinedResult.size() - middleOfKernel); i++ ) {
         double newValue = 0.0;
         int kernelIndex = 0;
         for (int j = i - middleOfKernel; j <= i + middleOfKernel; j++, kernelIndex++) {
-            newValue += gaussianKernel[kernelIndex] * input[j].second;
+            newValue += gaussianKernel[kernelIndex] * joinedResult[j].second;
         }
-        output.emplace_back(input[i].first, newValue);
+        output.emplace_back(joinedResult[i].first, newValue);
     }
 
     m_fileWriter.write(output);
 
-    return std::vector<std::pair<int, int>>();
-
+    return joinedResult;
 }
 
 std::vector<double> GaussianFilter::calculateGaussianKernel(unsigned int kernelSize, double standardDeviation) {
